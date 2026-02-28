@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="w-full lg:w-1/2 relative flex items-center justify-center">
+      <div class="w-full lg:w-1/2 relative flex flex-col items-center justify-center">
         <div class="absolute -inset-10 bg-[#800000]/5 blur-[120px] rounded-full"></div>
         
         <swiper
@@ -73,6 +73,12 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </swiper-slide>
         </swiper>
+
+        <div class="flex items-center gap-3 mt-8 md:hidden opacity-40">
+          <span class="h-[1px] w-8 bg-[#1A1A1A]"></span>
+          <span class="text-[9px] uppercase tracking-[0.3em] font-medium text-[#1A1A1A]">Swipe to see more</span>
+          <span class="h-[1px] w-8 bg-[#1A1A1A]"></span>
+        </div>
 
         <div class="absolute -bottom-6 -right-2 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center z-30 shadow-2xl p-4 md:p-6 animate-spin-slow ring-1 ring-black/5">
           <img src="@/assets/logo.png" class="w-full h-full object-contain" alt="Studio Logo">
