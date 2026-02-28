@@ -1,12 +1,10 @@
 <template>
   <section id="home" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#FDFCFB] px-6 md:px-12 lg:px-24 py-20">
-    
     <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
          style="background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');">
     </div>
 
     <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between z-10 gap-16 lg:gap-24">
-      
       <div class="w-full lg:w-1/2 space-y-10 text-center lg:text-left">
         <div class="space-y-6">
           <div class="flex items-center justify-center lg:justify-start gap-4">
@@ -53,28 +51,33 @@
           :effect="'cards'"
           :grabCursor="true"
           :loop="true"
-          :autoplay="{ delay: 3500, disableOnInteraction: false }"
+          :speed="800"
+          :autoplay="{ 
+            delay: 4000, 
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true 
+          }"
           :modules="modules"
           :cardsEffect="{
             slideShadows: false,
             rotate: true,
-            perSlideRotate: 3,
-            perSlideOffset: 12
+            perSlideRotate: 2,
+            perSlideOffset: 10
           }"
-          class="mySwiper w-full max-w-[320px] md:max-w-[480px] h-[500px] md:h-[650px]"
+          @touchStart="handleInteraction"
+          class="mySwiper w-full max-w-[280px] md:max-w-[400px] h-[420px] md:h-[580px]"
         >
           <swiper-slide v-for="(img, index) in galleryImages" :key="index" 
-            class="group rounded-3xl overflow-hidden bg-white shadow-2xl border-[12px] border-white ring-1 ring-black/5">
-            <img :src="img" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" :alt="'Gallery Image ' + index" />
+            class="group rounded-2xl overflow-hidden bg-white shadow-xl border-[8px] border-white ring-1 ring-black/5">
+            <img :src="img" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" :alt="'Gallery Image ' + index" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </swiper-slide>
         </swiper>
 
-        <div class="absolute -bottom-10 -right-4 md:right-0 w-28 h-28 md:w-40 md:h-40 bg-white rounded-full flex items-center justify-center z-30 shadow-2xl p-4 md:p-8 animate-spin-slow ring-1 ring-black/5">
+        <div class="absolute -bottom-6 -right-2 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center z-30 shadow-2xl p-4 md:p-6 animate-spin-slow ring-1 ring-black/5">
           <img src="@/assets/logo.png" class="w-full h-full object-contain" alt="Studio Logo">
         </div>
       </div>
-
     </div>
 
     <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-[#800000]/5 blur-[150px] rounded-full pointer-events-none"></div>
@@ -96,6 +99,10 @@ import card5 from '@/assets/card5.jpg';
 
 const modules = [EffectCards, Autoplay, Keyboard];
 const galleryImages = [card1, card2, card3, card4, card5];
+
+const handleInteraction = (swiper) => {
+  swiper.autoplay.stop();
+};
 </script>
 
 <style scoped>
@@ -125,8 +132,8 @@ section {
 
 @media (max-width: 640px) {
   .mySwiper {
-    height: 450px;
-    width: 290px;
+    height: 380px;
+    width: 260px;
   }
 }
 </style>
