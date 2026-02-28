@@ -1,7 +1,7 @@
 <template>
   <section id="home" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#FDFCFB] px-6 md:px-12 lg:px-24 py-20">
-    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
-         style="background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');">
+    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" 
+         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 24px 24px;">
     </div>
 
     <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between z-10 gap-16 lg:gap-24">
