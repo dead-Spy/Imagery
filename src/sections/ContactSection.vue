@@ -1,128 +1,111 @@
 <template>
-  <section id="contact-section" class="px-6 lg:px-32 py-16 lg:py-24 relative overflow-hidden bg-brand-cream/30">
-    <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+  <section id="contact" class="relative py-32 bg-[#FDFCFB] overflow-hidden px-6 md:px-12 lg:px-24">
+    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" 
+         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 24px 24px;">
+    </div>
     
-    <div class="max-w-7xl mx-auto relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-[#800000]/5 blur-[150px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#800000]/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="container mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
         
-        <div class="lg:col-span-5 space-y-10 lg:space-y-12 text-center lg:text-left">
-          <div>
-            <span class="text-brand-maroon font-bold tracking-[0.2em] uppercase text-sm">Contact Us</span>
-            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-maroon mt-4 mb-6 leading-tight">
-              Let’s Capture <br> <span class="text-brand-dark italic">Your Story</span>
-            </h1>
-            <p class="text-brand-dark/70 text-base md:text-lg leading-relaxed max-w-md mx-auto lg:mx-0 font-medium">
-              Have a special event coming up? We'd love to hear from you. Reach out and let's create something magical together.
+        <div class="space-y-16">
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="h-[1px] w-12 bg-[#800000]"></span>
+              <span class="text-[#800000] font-bold uppercase tracking-[0.6em] text-[10px]">Get In Touch</span>
+            </div>
+            <h2 class="text-[#1A1A1A] text-6xl md:text-7xl lg:text-8xl font-extralight tracking-tighter leading-[0.9]">
+              Let’s Create <br>
+              <span class="font-serif italic text-[#800000]">Magic.</span>
+            </h2>
+            <p class="text-[#1A1A1A]/60 text-lg font-light max-w-md leading-relaxed">
+              Have a vision in mind? We are here to transform your special moments into timeless visual stories.
             </p>
           </div>
 
-          <div class="space-y-6 md:space-y-8">
-            <div class="flex flex-col md:flex-row items-center lg:items-start gap-4 md:gap-6 group">
-              <div class="w-14 h-14 bg-white border border-brand-rose/40 rounded-2xl flex items-center justify-center text-brand-maroon group-hover:bg-brand-maroon group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                <i class="fa-solid fa-phone text-xl"></i>
+          <div class="grid gap-10">
+            <div v-for="(info, index) in contactInfo" :key="index" class="group flex items-start gap-6">
+              <div class="w-12 h-12 rounded-full border border-[#800000]/20 flex items-center justify-center text-[#800000] transition-all duration-500 group-hover:bg-[#800000] group-hover:text-white group-hover:scale-110">
+                <i :class="info.icon"></i>
               </div>
-              <div class="flex flex-col">
-                <h4 class="font-bold text-brand-maroon text-sm uppercase tracking-wider mb-1">Call Us</h4>
-                <div class="flex items-center justify-center lg:justify-start gap-2">
-                  <i class="fa-solid fa-phone-flip text-brand-dark/30 text-sm"></i>
-                  <p class="text-brand-dark font-semibold text-base md:text-lg">+880 1629 833 169</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center lg:items-start gap-4 md:gap-6 group">
-              <div class="w-14 h-14 bg-white border border-brand-rose/40 rounded-2xl flex items-center justify-center text-brand-maroon group-hover:bg-brand-maroon group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                <i class="fa-solid fa-envelope text-xl"></i>
-              </div>
-              <div class="flex flex-col">
-                <h4 class="font-bold text-brand-maroon text-sm uppercase tracking-wider mb-1">Email Address</h4>
-                <div class="flex items-center justify-center lg:justify-start gap-2">
-                  <i class="fa-solid fa-paper-plane text-brand-dark/30 text-sm"></i>
-                  <p class="text-brand-dark font-semibold text-base md:text-lg">imagery990@gmail.com</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center lg:items-start gap-4 md:gap-6 group">
-              <div class="w-14 h-14 bg-white border border-brand-rose/40 rounded-2xl flex items-center justify-center text-brand-maroon group-hover:bg-brand-maroon group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                <i class="fa-solid fa-location-dot text-xl"></i>
-              </div>
-              <div class="flex flex-col">
-                <h4 class="font-bold text-brand-maroon text-sm uppercase tracking-wider mb-1">Our Studio</h4>
-                <div class="flex items-center justify-center lg:justify-start gap-2">
-                  <i class="fa-solid fa-map-pin text-brand-dark/30 text-sm"></i>
-                  <p class="text-brand-dark font-semibold text-base md:text-lg">Savar, Dhaka, Bangladesh</p>
-                </div>
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#800000]/40 mb-1">{{ info.label }}</p>
+                <p class="text-xl text-[#1A1A1A] font-light">{{ info.value }}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-7">
-          <div class="bg-white/80 backdrop-blur-md p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-xl border border-brand-rose/20 relative">
-            <form @submit.prevent class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-              <div class="md:col-span-1">
-                <label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-maroon mb-2 md:mb-3 ml-1">Full Name</label>
-                <input type="text" class="w-full bg-brand-cream/50 border border-brand-rose/30 rounded-xl md:rounded-2xl py-3 md:py-4 px-6 focus:outline-none focus:ring-2 focus:ring-brand-maroon/10 focus:bg-white focus:border-brand-maroon transition-all text-brand-dark font-medium" placeholder="John Doe">
-              </div>
-
-              <div class="md:col-span-1">
-                <label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-maroon mb-2 md:mb-3 ml-1">Email Address</label>
-                <input type="email" class="w-full bg-brand-cream/50 border border-brand-rose/30 rounded-xl md:rounded-2xl py-3 md:py-4 px-6 focus:outline-none focus:ring-2 focus:ring-brand-maroon/10 focus:bg-white focus:border-brand-maroon transition-all text-brand-dark font-medium" placeholder="john@example.com">
-              </div>
-
-              <div class="md:col-span-2">
-                <label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-maroon mb-2 md:mb-3 ml-1">Event Type</label>
-                <div class="relative">
-                  <select class="w-full bg-brand-cream/50 border border-brand-rose/30 rounded-xl md:rounded-2xl py-3 md:py-4 px-6 focus:outline-none focus:ring-2 focus:ring-brand-maroon/10 focus:bg-white focus:border-brand-maroon transition-all text-brand-dark font-medium appearance-none">
-                    <option>Wedding Photography</option>
-                    <option>Event Cinematography</option>
-                    <option>Corporate Shoot</option>
-                    <option>Others</option>
-                  </select>
+        <div class="relative">
+          <div class="absolute -inset-4 bg-[#800000]/5 blur-3xl rounded-full opacity-50"></div>
+          <div class="relative bg-white p-8 md:p-16 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(128,0,0,0.08)] border border-[#1A1A1A]/5">
+            <form @submit.prevent class="space-y-8">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="relative group">
+                  <input type="text" required class="peer w-full bg-transparent border-b border-[#1A1A1A]/10 py-4 focus:outline-none focus:border-[#800000] transition-all text-[#1A1A1A] placeholder-transparent">
+                  <label class="absolute left-0 top-4 text-[#1A1A1A]/40 text-sm uppercase tracking-widest pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#800000] peer-valid:-top-4 peer-valid:text-[10px]">Full Name</label>
+                </div>
+                <div class="relative group">
+                  <input type="email" required class="peer w-full bg-transparent border-b border-[#1A1A1A]/10 py-4 focus:outline-none focus:border-[#800000] transition-all text-[#1A1A1A] placeholder-transparent">
+                  <label class="absolute left-0 top-4 text-[#1A1A1A]/40 text-sm uppercase tracking-widest pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#800000] peer-valid:-top-4 peer-valid:text-[10px]">Email Address</label>
                 </div>
               </div>
 
-              <div class="md:col-span-2">
-                <label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-maroon mb-2 md:mb-3 ml-1">Message</label>
-                <textarea rows="4" class="w-full bg-brand-cream/50 border border-brand-rose/30 rounded-xl md:rounded-2xl py-3 md:py-4 px-6 focus:outline-none focus:ring-2 focus:ring-brand-maroon/10 focus:bg-white focus:border-brand-maroon transition-all text-brand-dark font-medium resize-none" placeholder="Tell us about your event..."></textarea>
+              <div class="relative group">
+                <select class="w-full bg-transparent border-b border-[#1A1A1A]/10 py-4 focus:outline-none focus:border-[#800000] transition-all text-[#1A1A1A] appearance-none cursor-pointer">
+                  <option disabled selected>Select Event Type</option>
+                  <option>Wedding Photography</option>
+                  <option>Event Cinematography</option>
+                  <option>Corporate Shoot</option>
+                </select>
+                <div class="absolute right-0 top-6 pointer-events-none text-[#800000]">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
               </div>
 
-              <div class="md:col-span-2 mt-2 md:mt-4">
-                <button class="group relative w-full overflow-hidden rounded-xl md:rounded-2xl bg-brand-maroon px-8 py-4 md:py-5 font-bold text-white transition-all duration-300 hover:bg-brand-dark shadow-lg shadow-brand-maroon/20">
-                  <span class="relative z-10 flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs md:text-sm">
-                    Send Inquiry
-                    <i class="fa-solid fa-paper-plane text-[10px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
-                  </span>
-                </button>
+              <div class="relative group">
+                <textarea rows="4" required class="peer w-full bg-transparent border-b border-[#1A1A1A]/10 py-4 focus:outline-none focus:border-[#800000] transition-all text-[#1A1A1A] placeholder-transparent resize-none"></textarea>
+                <label class="absolute left-0 top-4 text-[#1A1A1A]/40 text-sm uppercase tracking-widest pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#800000] peer-valid:-top-4 peer-valid:text-[10px]">Your Message</label>
               </div>
+
+              <button class="w-full group/btn relative py-6 bg-[#1A1A1A] text-white overflow-hidden rounded-2xl transition-all duration-500 shadow-xl">
+                <span class="relative z-10 font-bold tracking-[0.4em] text-[10px] uppercase flex items-center justify-center gap-4">
+                  Send Inquiry
+                  <i class="fa-solid fa-arrow-right-long transition-transform duration-500 group-hover/btn:translate-x-2"></i>
+                </span>
+                <div class="absolute inset-0 bg-[#800000] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+              </button>
             </form>
           </div>
         </div>
 
       </div>
     </div>
-
-    <div class="absolute -bottom-24 -left-24 w-64 md:w-96 h-64 md:h-96 bg-brand-rose/20 rounded-full blur-[80px] md:blur-[100px] -z-10"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-cream/20 -z-20"></div>
   </section>
 </template>
 
-<script>
-export default {}
+<script setup>
+const contactInfo = [
+  { icon: 'fa-solid fa-phone', label: 'Call Us', value: '+880 1629 833 169' },
+  { icon: 'fa-solid fa-envelope', label: 'Email Address', value: 'imagery990@gmail.com' },
+  { icon: 'fa-solid fa-location-dot', label: 'Our Studio', value: 'Savar, Dhaka, BD' }
+];
 </script>
 
 <style scoped>
-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23800000'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1.2rem center;
-  background-size: 1rem;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@200;300;400;600&display=swap');
+
+section {
+  font-family: 'Inter', sans-serif;
 }
-@media (min-width: 768px) {
-  select {
-    background-position: right 1.5rem center;
-    background-size: 1.2rem;
-  }
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+select {
+  background-image: none;
 }
 </style>
