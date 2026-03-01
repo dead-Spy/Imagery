@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="relative py-32 bg-[#FDFCFB] overflow-hidden px-6 md:px-12 lg:px-24">
-    <div class="absolute inset-0 opacity-[0.08] pointer-events-none" 
-         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 32px 32px;">
+    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" 
+         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 24px 24px;">
     </div>
 
     <div class="container mx-auto relative z-10">
@@ -18,7 +18,7 @@
               :slides-per-view="4"
               :space-between="16"
               :loop="true"
-              :speed="5000"
+              :speed="7000"
               :autoplay="{
                 delay: 0,
                 disableOnInteraction: false,
@@ -40,21 +40,21 @@
           <div class="relative flex-1 flex justify-center items-center perspective-2000">
             <div class="relative w-full max-w-[260px] md:max-w-[300px] aspect-[3/4] group">
               <div class="absolute inset-0 z-10 transform rotate-[-12deg] -translate-x-8 translate-y-8 shadow-xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[-25deg] group-hover:-translate-x-40 group-hover:-translate-y-12">
-                <img src="@/assets/image3.jpg" class="w-full h-full object-cover">
+                <img :src="image3" class="w-full h-full object-cover">
                 <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span class="bg-white/90 px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-[#800000]">Design</span>
                 </div>
               </div>
 
               <div class="absolute inset-0 z-20 transform rotate-0 translate-x-0 translate-y-0 shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-20">
-                <img src="@/assets/image2.jpg" class="w-full h-full object-cover scale-110">
+                <img :src="image2" class="w-full h-full object-cover scale-110">
                 <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span class="bg-[#800000] px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-white">Events</span>
                 </div>
               </div>
 
               <div class="absolute inset-0 z-30 transform rotate-[12deg] translate-x-8 -translate-y-8 shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[25deg] group-hover:translate-x-40 group-hover:-translate-y-12">
-                <img src="@/assets/image1.jpg" class="w-full h-full object-cover">
+                <img :src="image1" class="w-full h-full object-cover">
                 <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span class="bg-white/90 px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-[#800000]">Photography</span>
                 </div>
@@ -93,7 +93,10 @@
           </div>
 
           <div class="pt-6">
-            <button class="group relative px-12 py-5 bg-[#1A1A1A] text-white overflow-hidden rounded-full transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(128,0,0,0.3)] w-full sm:w-auto">
+            <button 
+              @click="$emit('open-experience')"
+              class="group relative px-12 py-5 bg-[#1A1A1A] text-white overflow-hidden rounded-full transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(128,0,0,0.3)] w-full sm:w-auto"
+            >
               <span class="relative z-10 font-bold tracking-[0.25em] text-[11px] uppercase">Start the Experience</span>
               <div class="absolute inset-0 bg-[#800000] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
             </button>
@@ -104,10 +107,12 @@
     </div>
     
     <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[#800000]/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-[#800000]/5 blur-[150px] rounded-full pointer-events-none"></div>
   </section>
 </template>
 
 <script setup>
+import { defineEmits } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Mousewheel, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -116,8 +121,24 @@ import 'swiper/css/free-mode';
 import image1 from '@/assets/image1.jpg';
 import image2 from '@/assets/image2.jpg';
 import image3 from '@/assets/image3.jpg';
+import image4 from '@/assets/image4.jpg';
+import image5 from '@/assets/image5.jpg';
+import image6 from '@/assets/image6.jpg';
+import image7 from '@/assets/image7.jpg';
+import image8 from '@/assets/image8.jpg';
 
-const scrollImages = [image1, image2, image3, image1, image2, image3, image1, image2];
+defineEmits(['open-experience']);
+
+const scrollImages = [
+  image4, 
+  image5, 
+  image6, 
+  image7, 
+  image8, 
+  image1, 
+  image2, 
+  image3
+];
 </script>
 
 <style scoped>
