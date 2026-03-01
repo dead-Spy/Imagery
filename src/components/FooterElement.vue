@@ -1,90 +1,113 @@
 <template>
-  <footer class="bg-brand-dark w-full pt-20 pb-8 px-6 lg:px-32 border-t border-brand-maroon/30 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+  <footer class="bg-[#FDFCFB] w-full pt-32 pb-12 px-6 md:px-12 lg:px-24 relative overflow-hidden border-t border-[#1A1A1A]/5">
+    
+    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" 
+         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 24px 24px;">
+    </div>
+
+    <div class="container mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
         
-        <div class="flex flex-col items-center md:items-start space-y-5">
-          <div>
-            <p class="font-display text-4xl font-bold text-white leading-none tracking-tight">Imagery</p>
-          </div>
-          <p class="text-gray-300 text-sm leading-relaxed text-center md:text-left font-medium">
-            Professional photography and cinematography services. We turn your precious moments into timeless masterpieces.
+        <div class="lg:col-span-5 space-y-8">
+          <h2 class="font-serif italic text-6xl text-[#1A1A1A] tracking-tighter">Imagery.</h2>
+          <p class="text-[#1A1A1A]/60 text-lg font-light leading-relaxed max-w-sm">
+            Crafting visual legacies through cinematic storytelling and elite photography. We turn moments into timeless art pieces.
           </p>
-          <div class="flex gap-4 pt-2">
+          <div class="flex gap-4 pt-4">
             <a v-for="(social, i) in socials" :key="i" :href="social.link" target="_blank" 
-               class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-brand-maroon hover:border-brand-maroon transition-all duration-300">
+               class="w-12 h-12 rounded-full border border-[#1A1A1A]/10 flex items-center justify-center text-[#1A1A1A]/60 hover:text-white hover:bg-[#800000] hover:border-[#800000] transition-all duration-500 transform hover:-translate-y-2">
               <i :class="social.icon"></i>
             </a>
           </div>
         </div>
 
-        <div class="flex flex-col items-center md:items-start">
-          <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6 border-b-2 border-brand-maroon pb-1">Quick Links</h4>
-          <ul class="space-y-4 text-center md:text-left">
-            <li><a href="#" class="text-gray-300 hover:text-white font-semibold transition-colors">Home</a></li>
-            <li><a href="#services-section" class="text-gray-300 hover:text-white font-semibold transition-colors">Our Services</a></li>
-            <li><a href="#portfolio-section" class="text-gray-300 hover:text-white font-semibold transition-colors">Portfolio</a></li>
-            <li><a href="#contact-section" class="text-gray-300 hover:text-white font-semibold transition-colors">Contact Us</a></li>
-          </ul>
-        </div>
+        <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="space-y-8">
+            <h4 class="text-[#800000] font-bold uppercase tracking-[0.4em] text-[10px]">Navigation</h4>
+            <ul class="space-y-4">
+              <li v-for="link in ['Home', 'Services', 'Portfolio', 'Contact']" :key="link">
+                <a href="#" class="text-[#1A1A1A]/70 hover:text-[#800000] text-sm font-medium transition-all duration-300 flex items-center gap-2 group">
+                  <span class="w-0 h-[1px] bg-[#800000] transition-all duration-300 group-hover:w-4"></span>
+                  {{ link }}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <div class="flex flex-col items-center md:items-start">
-          <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6 border-b-2 border-brand-maroon pb-1">Services</h4>
-          <ul class="space-y-4 text-center md:text-left text-gray-300 font-semibold">
-            <li class="hover:text-white transition-colors cursor-pointer">Wedding Photography</li>
-            <li class="hover:text-white transition-colors cursor-pointer">Cinematic Films</li>
-            <li class="hover:text-white transition-colors cursor-pointer">Event Coverage</li>
-            <li class="hover:text-white transition-colors cursor-pointer">Portrait Sessions</li>
-          </ul>
-        </div>
+          <div class="space-y-8">
+            <h4 class="text-[#800000] font-bold uppercase tracking-[0.4em] text-[10px]">Studio</h4>
+            <ul class="space-y-4 text-[#1A1A1A]/70 text-sm font-medium">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-location-dot mt-1 text-[#800000]"></i>
+                Savar, Dhaka, Bangladesh
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-phone text-[#800000]"></i>
+                +880 1629 833 169
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-envelope text-[#800000]"></i>
+                imagery990@gmail.com
+              </li>
+            </ul>
+          </div>
 
-        <div class="flex flex-col items-center md:items-start">
-          <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6 border-b-2 border-brand-maroon pb-1">Contact</h4>
-          <div class="space-y-4 text-center md:text-left text-gray-300 font-semibold">
-            <p class="flex items-center justify-center md:justify-start gap-3">
-              <i class="fa-solid fa-location-dot text-brand-maroon text-lg"></i>
-              Savar, Dhaka, Bangladesh
-            </p>
-            <p class="flex items-center justify-center md:justify-start gap-3">
-              <i class="fa-solid fa-phone text-brand-maroon text-lg"></i>
-              +880 1629 833 169
-            </p>
-            <p class="flex items-center justify-center md:justify-start gap-3">
-              <i class="fa-solid fa-envelope text-brand-maroon text-lg"></i>
-              imagery990@gmail.com
-            </p>
+          <div class="space-y-8">
+            <h4 class="text-[#800000] font-bold uppercase tracking-[0.4em] text-[10px]">Newsletter</h4>
+            <div class="relative group">
+              <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-[#1A1A1A]/10 py-3 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#800000] transition-all placeholder:text-[#1A1A1A]/30">
+              <button class="absolute right-0 top-3 text-[#1A1A1A]/40 hover:text-[#800000] transition-colors">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+            <p class="text-[9px] uppercase tracking-widest text-[#1A1A1A]/40">Subscribe for updates</p>
           </div>
         </div>
       </div>
 
-      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">
-          © 2026 Imagery • All Rights Reserved
-        </p>
-        
-        <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-widest">
-          <span>Developed by</span>
+      <div class="pt-12 border-t border-[#1A1A1A]/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-6">
+          <p class="text-[#1A1A1A]/40 text-[10px] font-bold uppercase tracking-[0.3em]">
+            © 2026 Imagery Studio
+          </p>
+          <span class="h-4 w-[1px] bg-[#1A1A1A]/10 hidden md:block"></span>
+          <p class="text-[#1A1A1A]/40 text-[10px] font-bold uppercase tracking-[0.3em] cursor-pointer hover:text-[#800000] transition-colors">
+            Privacy Policy
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="text-[#1A1A1A]/40 text-[10px] font-bold uppercase tracking-[0.3em]">Developed by</span>
           <a href="https://tanvir-amin.netlify.app/" target="_blank" 
-             class="text-white hover:text-brand-maroon transition-all border-b border-white/30 hover:border-brand-maroon pb-0.5">
+             class="text-[#1A1A1A]/80 hover:text-[#800000] text-[10px] font-bold uppercase tracking-[0.3em] transition-all border-b border-[#1A1A1A]/10 hover:border-[#800000] pb-1">
             Tanvir Amin
           </a>
         </div>
       </div>
     </div>
+
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#800000]/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-64 h-64 bg-[#800000]/5 blur-[100px] rounded-full pointer-events-none"></div>
   </footer>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      socials: [
-        { icon: 'fa-brands fa-facebook-f', link: 'https://facebook.com/Imagery' },
-        { icon: 'fa-brands fa-instagram', link: 'https://instagram.com/Imagery.990' },
-        { icon: 'fa-brands fa-whatsapp', link: 'https://wa.me/8801629833169' },
-        { icon: 'fa-solid fa-globe', link: 'https://tanvir-amin.netlify.app/' }
-      ]
-    }
-  }
-}
+<script setup>
+const socials = [
+  { icon: 'fa-brands fa-facebook-f', link: 'https://facebook.com/Imagery' },
+  { icon: 'fa-brands fa-instagram', link: 'https://instagram.com/Imagery.990' },
+  { icon: 'fa-brands fa-whatsapp', link: 'https://wa.me/8801629833169' },
+  { icon: 'fa-solid fa-globe', link: 'https://tanvir-amin.netlify.app/' }
+];
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@200;400;500;600&display=swap');
+
+footer {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+</style>
