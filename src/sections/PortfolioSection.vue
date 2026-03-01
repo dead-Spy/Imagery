@@ -1,7 +1,7 @@
 <template>
   <section id="portfolio" class="relative py-32 bg-[#FDFCFB] overflow-hidden px-6 md:px-12 lg:px-24">
-    <div class="absolute inset-0 opacity-[0.05] pointer-events-none" 
-         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 40px 40px;">
+    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" 
+         style="background-image: radial-gradient(#800000 0.8px, transparent 0.8px); background-size: 24px 24px;">
     </div>
 
     <div class="container mx-auto relative z-10">
@@ -85,7 +85,9 @@
 
     </div>
 
+    <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-[#800000]/5 blur-[150px] rounded-full pointer-events-none"></div>
     <div class="absolute top-1/2 left-0 w-96 h-96 bg-[#800000]/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 right-10 w-64 h-64 bg-[#1A1A1A]/5 blur-[100px] rounded-full pointer-events-none"></div>
   </section>
 </template>
 
