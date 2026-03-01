@@ -1,31 +1,24 @@
 <template>
-
-	<!-- Main section start -->
 	<main-section></main-section>
-	<!-- Main section end -->
 
-	<!-- About section start -->
-	<about-section></about-section>
-	<!-- About section end -->
+	<about-section @open-experience="isProcessOpen = true"></about-section>
 
-	<!-- Services section start -->
+	<transition name="luxury-fade">
+		<process-section v-if="isProcessOpen" @close="isProcessOpen = false"></process-section>
+	</transition>
+
 	<service-section></service-section>
-	<!-- Services section end -->
 
-	<!-- Portfolio section start -->
 	<portfolio-section></portfolio-section>
-	<!-- Portfolio section end -->
 
-
-	<!-- Contact section start -->
 	<contact-section></contact-section>
-	<!-- Contact section end -->
-
 </template>
 
 <script>
+import { ref, watch } from 'vue';
 import MainSection from '@/sections/MainSection.vue';
 import AboutSection from '@/sections/AboutSection.vue';
+import ProcessSection from '@/sections/ProcessSection.vue';
 import ServiceSection from '@/sections/ServiceSection.vue';
 import PortfolioSection from '@/sections/PortfolioSection.vue';
 import ContactSection from '@/sections/ContactSection.vue';
@@ -34,14 +27,38 @@ export default {
 	components: {
 		MainSection,
 		AboutSection,
+		ProcessSection,
 		ServiceSection,
 		PortfolioSection,
 		ContactSection,
+	},
+	setup() {
+		const isProcessOpen = ref(false);
+
+		watch(isProcessOpen, (value) => {
+			if (value) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'auto';
+			}
+		});
+
+		return {
+			isProcessOpen
+		};
 	}
 }
 </script>
 
 <style scoped>
+.luxury-fade-enter-active,
+.luxury-fade-leave-active {
+  transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
 
-
+.luxury-fade-enter-from,
+.luxury-fade-leave-to {
+  opacity: 0;
+  transform: scale(1.05) translateY(20px);
+}
 </style>
