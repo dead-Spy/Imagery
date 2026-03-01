@@ -27,12 +27,12 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8 pt-4">
-          <button class="w-full sm:w-auto group relative px-12 py-5 bg-[#1A1A1A] text-white overflow-hidden rounded-full transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(128,0,0,0.3)]">
+          <a href="#portfolio" class="w-full sm:w-auto group relative px-12 py-5 bg-[#1A1A1A] text-white overflow-hidden rounded-full transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(128,0,0,0.3)] flex items-center justify-center">
             <span class="relative z-10 font-bold tracking-[0.25em] text-[11px] uppercase group-hover:text-white">View Portfolio</span>
             <div class="absolute inset-0 bg-[#800000] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-          </button>
+          </a>
 
-          <button class="w-full sm:w-auto group flex items-center gap-4 text-[#1A1A1A] hover:text-[#800000] transition-all duration-300">
+          <button @click="isModalOpen = true" class="w-full sm:w-auto group flex items-center gap-4 text-[#1A1A1A] hover:text-[#800000] transition-all duration-300">
             <span class="relative flex h-14 w-14 items-center justify-center rounded-full border border-[#1A1A1A]/20 group-hover:border-[#800000] transition-colors">
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#800000]/10 opacity-75"></span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="relative z-10">
@@ -88,10 +88,35 @@
 
     <div class="absolute top-0 right-0 w-1/4 h-1/4 bg-[#800000]/5 blur-[150px] rounded-full pointer-events-none"></div>
     <div class="absolute bottom-10 left-10 w-64 h-64 bg-[#1A1A1A]/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <Teleport to="body">
+      <Transition name="video-fade">
+        <div v-if="isModalOpen" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-12">
+          <div class="absolute inset-0 bg-black/80 backdrop-blur-xl" @click="isModalOpen = false"></div>
+          
+          <div class="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <button @click="isModalOpen = false" class="absolute top-6 right-6 z-[10001] bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all backdrop-blur-md">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <video 
+              :src="introVideo" 
+              class="w-full h-full object-contain" 
+              controls 
+              autoplay
+              playsinline
+            ></video>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectCards, Autoplay, Keyboard } from 'swiper/modules';
 import 'swiper/css';
@@ -102,9 +127,11 @@ import card2 from '@/assets/card2.jpg';
 import card3 from '@/assets/card3.jpg';
 import card4 from '@/assets/card4.jpg';
 import card5 from '@/assets/card5.jpg';
+import introVideo from '@/assets/intro.mp4';
 
 const modules = [EffectCards, Autoplay, Keyboard];
 const galleryImages = [card1, card2, card3, card4, card5];
+const isModalOpen = ref(false);
 
 const handleInteraction = (swiper) => {
   swiper.autoplay.stop();
@@ -113,6 +140,10 @@ const handleInteraction = (swiper) => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@200;300;400;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
 
 section {
   font-family: 'Inter', sans-serif;
@@ -134,6 +165,17 @@ section {
 .mySwiper :deep(.swiper-slide) {
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
+}
+
+.video-fade-enter-active,
+.video-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-fade-enter-from,
+.video-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 @media (max-width: 640px) {
