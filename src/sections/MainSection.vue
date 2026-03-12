@@ -127,7 +127,8 @@ import card2 from '@/assets/card2.jpg';
 import card3 from '@/assets/card3.jpg';
 import card4 from '@/assets/card4.jpg';
 import card5 from '@/assets/card5.jpg';
-import introVideo from '@/assets/trailer.mp4';
+
+const introVideo = 'https://res.cloudinary.com/dfytxj7qe/video/upload/q_auto,vc_auto/v1773339804/trailer_apgdz7.mp4';
 
 const modules = [EffectCards, Autoplay, Keyboard];
 const galleryImages = [card1, card2, card3, card4, card5];
