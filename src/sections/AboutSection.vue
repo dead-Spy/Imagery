@@ -38,24 +38,54 @@
           </div>
 
           <div class="relative flex-1 flex justify-center items-center perspective-2000">
-            <div class="relative w-full max-w-[260px] md:max-w-[300px] aspect-[3/4] group">
-              <div class="absolute inset-0 z-10 transform rotate-[-12deg] -translate-x-8 translate-y-8 shadow-xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[-25deg] group-hover:-translate-x-40 group-hover:-translate-y-12">
+            <div 
+              class="relative w-full max-w-[260px] md:max-w-[300px] aspect-[3/4] group cursor-pointer"
+              @click="isExpanded = !isExpanded"
+            >
+              <div 
+                class="absolute inset-0 z-10 transform shadow-xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                :class="[
+                  isExpanded ? 'rotate-[-25deg] -translate-x-40 -translate-y-12' : 'rotate-[-12deg] -translate-x-8 translate-y-8',
+                  'md:group-hover:rotate-[-25deg] md:group-hover:-translate-x-40 md:group-hover:-translate-y-12'
+                ]"
+              >
                 <img :src="image3" class="w-full h-full object-cover">
-                <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div 
+                  class="absolute bottom-4 left-4 transition-opacity"
+                  :class="isExpanded ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'"
+                >
                   <span class="bg-white/90 px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-[#800000]">Design</span>
                 </div>
               </div>
 
-              <div class="absolute inset-0 z-20 transform rotate-0 translate-x-0 translate-y-0 shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-20">
+              <div 
+                class="absolute inset-0 z-20 transform shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                :class="[
+                  isExpanded ? '-translate-y-20' : 'rotate-0 translate-x-0 translate-y-0',
+                  'md:group-hover:-translate-y-20'
+                ]"
+              >
                 <img :src="image2" class="w-full h-full object-cover scale-110">
-                <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div 
+                  class="absolute bottom-4 left-4 transition-opacity"
+                  :class="isExpanded ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'"
+                >
                   <span class="bg-[#800000] px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-white">Events</span>
                 </div>
               </div>
 
-              <div class="absolute inset-0 z-30 transform rotate-[12deg] translate-x-8 -translate-y-8 shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[25deg] group-hover:translate-x-40 group-hover:-translate-y-12">
+              <div 
+                class="absolute inset-0 z-30 transform shadow-2xl rounded-2xl overflow-hidden border-4 border-white transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                :class="[
+                  isExpanded ? 'rotate-[25deg] translate-x-40 -translate-y-12' : 'rotate-[12deg] translate-x-8 -translate-y-8',
+                  'md:group-hover:rotate-[25deg] md:group-hover:translate-x-40 md:group-hover:-translate-y-12'
+                ]"
+              >
                 <img :src="image1" class="w-full h-full object-cover">
-                <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div 
+                  class="absolute bottom-4 left-4 transition-opacity"
+                  :class="isExpanded ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'"
+                >
                   <span class="bg-white/90 px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-[#800000]">Photography</span>
                 </div>
               </div>
@@ -112,7 +142,7 @@
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
+import { defineEmits, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Mousewheel, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -128,6 +158,8 @@ import image7 from '@/assets/image7.jpg';
 import image8 from '@/assets/image8.jpg';
 
 defineEmits(['open-experience']);
+
+const isExpanded = ref(false);
 
 const scrollImages = [
   image4, 

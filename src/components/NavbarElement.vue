@@ -53,7 +53,8 @@
               {{ item.name }}
             </a>
             <a 
-              href="#contact" 
+              href="https://wa.me/8801629833169?text=Hello!%20I'm%20interested%20in%20the%20services%20I%20saw%20on%20your%20'Imagery'%20website.%20Can%20you%20please%20provide%20more%20details%20about%20your%20packages%20and%20pricing?%20Looking%20forward%20to%20your%20response."
+              target="_blank"
               @click="isMobileMenuOpen = false" 
               class="bg-[#800000] text-white text-center py-4 rounded-2xl font-bold uppercase tracking-widest text-sm shadow-lg mt-2 active:scale-95 transition-transform flex items-center justify-center gap-2"
             >
