@@ -78,7 +78,7 @@
 
         <div class="flex items-center gap-3">
           <span class="text-[#1A1A1A]/40 text-[10px] font-bold uppercase tracking-[0.3em]">Developed by</span>
-          <a href="https://tanvir-amin.netlify.app/" target="_blank" 
+          <a href="https://tanviramin.is-a.dev/" target="_blank" 
              class="text-[#1A1A1A]/80 hover:text-[#800000] text-[10px] font-bold uppercase tracking-[0.3em] transition-all border-b border-[#1A1A1A]/10 hover:border-[#800000] pb-1">
             Tanvir Amin
           </a>
