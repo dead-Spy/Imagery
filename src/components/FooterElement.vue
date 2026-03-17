@@ -96,7 +96,7 @@ const socials = [
   { icon: 'fa-brands fa-facebook-f', link: 'https://facebook.com/Imagery' },
   { icon: 'fa-brands fa-instagram', link: 'https://instagram.com/Imagery.990' },
   { icon: 'fa-brands fa-whatsapp', link: 'https://wa.me/8801629833169' },
-  { icon: 'fa-solid fa-globe', link: 'https://tanvir-amin.netlify.app/' }
+  { icon: 'fa-solid fa-globe', link: 'https://tanviramin.is-a.dev/' }
 ];
 </script>
 
